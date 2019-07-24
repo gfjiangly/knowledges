@@ -24,3 +24,16 @@ conda install pytorch torchvision cudatoolkit=10.0 -c pytorch
 pip注意使用清华pypi源，速度快很多
 
 pip uninstall torch torchvision
+
+
+
+缓存位置
+
+Linux and Unix
+
+~/.cache/pip 
+
+Windows
+
+%LocalAppData%\pip\Cache
+
