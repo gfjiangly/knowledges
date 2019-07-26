@@ -1,4 +1,4 @@
-设置默认启动方式
+设置默认启动方式（持久)
 
 ```bash
 sudo systemctl set-default multi-user.target	# 命令行
@@ -7,11 +7,20 @@ sudo systemctl set-default graphical.target		# 图形界面
 
 
 
-启用/禁用图形界面
+启用/禁用图形界面（临时）
 
 ```bash
-sudo systemctl start lightdm	# 启用图像界面
-sudo systemctl disable lightdm.service	# 禁用图形界面
+sudo service lightdm start	# 启用图像界面
+sudo service lightdm stop	# 禁用图形界面
+```
+
+
+
+连接服务器的显示器命令行/图像界面切换：
+
+```bash
+Ctrl+Alt+F1-F6	# 进入命令行
+Ctrl+Alt+F7		# 进入图像界面
 ```
 
 
