@@ -1,0 +1,40 @@
+问题：
+
+在初始化git仓库的时候没有创建`.gitignore`文件来过滤不必要提交的文件, 后来却发现某些文件不需要提交, 但是这些文件已经被提交了, 这时候创建`.gitignore`文件忽略这些文件时, 发现ignore的规则对那些已经被track的文件无效.
+
+`.gitignore`文件只会忽略那些没有被跟踪的文件, 也就是说ignore规则只对那些在规则建立之后被新创建的新文件生效. 因此推荐: **初始化git项目时就创建.gitignore文件**.
+
+
+
+需求：本地文件保留，但是github或本地commit中删除
+
+
+
+操作
+
+1. 删除track的文件 (**已经commit的文件**)
+
+- `git rm 要忽略的文件`
+- `git commit -a -m "删除不需要的文件"`
+
+2. 在`.gitignore`文件中添加忽略规则
+
+- (1) 在`.gitignore`文件中添加ignore条目, 如: `some/path/some-file.ext` 
+- (2) 提交`.gitignore`文件: `git commit -a -m "添加ignore规则"` 
+
+3. 推送到远程仓库是ignore规则对于其他开发者也能生效: `git push [remote]` 
+
+**tips: 上述步骤针对已经commit过的文件 (当然如果是commit过的文件且又有改动也是同样生效)**
+
+这样其他开发人员同步之后, 新的ignore规则就会对以前track过的文件生效了 (因为以前track的文件已经被untrack且被删除了, 如果还有这样的文件, 那肯定是新生成的! )
+
+如果文件比较少可以直接, `git rm`掉那些不必要的文件. 有时会跟踪一些IDE的生成文件, 如Android Studio的`.idea`目录 或 构建输出文件 如 `build`目录下的文件. 对于`build`目录中的文件都是不需要跟踪的, 重新构建之后此目录就会更新, `git status`后发现此目录下的文件在更新列表中, 那么你可以使用`git rm -r --cached`命令 (*删除工作空间中有改动的那些文件, 用git status可以看到cached的列表*) 结合正则表达式来快速删除目录中的文件和子目录中的文件. 因此**对于已经track且有改动的文件添加ignore规则**, 如下:
+
+1.  `git rm -r --cached 要忽略的文件`  (如: `git rm -r --cahced build/*`, 如修改列表中的内容全部是不需要的, 那么你可以使用最最简单的命令搞定`git rm -r --cached .`)
+2. `git add .`
+3. `git commit -m " commet for commit ....."`
+4. `git push`
+
+push之后其他开发人员pull之后, ignore规则就对其生效了.
+
+*tips: 上述步骤只针对**已经commit过且有改动**的文件 (因为rm的是cached列表中的文件, cached列表即修改列表)*
