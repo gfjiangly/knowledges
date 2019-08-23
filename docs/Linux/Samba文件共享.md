@@ -58,11 +58,19 @@ path = /home/gfjiang/
 
 browseable = yes
 
-public = yes
+public = no
 
 read only = no
 
+guest ok = no
+
+available = yes
+
+writable = yes 
+
 valid users = gfjiang
+
+write list = gfjiang
 
 create mask = 0777
 
@@ -72,9 +80,7 @@ force user = nobody
 
 force group = nogroup
 
-available = yes
 
-writable = yes 
 
  
 
@@ -276,6 +282,16 @@ net view [\\IP](file://IP)
  方法二有时不太好使，目前不清楚原因，似乎是清除后需要一定时间才能生效，有点奇怪。
 
 
+
+# samba在linux之间共享文件挂载
+
+mount -t cifs -o noserverino -o username="gfjiang",uid="501",gid="501" //10.193.0.20/gfjiang /home/gfjiang/10.193.0.20
+
+- 需要安装cifs
+
+- 网上没加-o noserverino,uid,gid大部分都不能成功挂载
+
+ 
 
 参考：
 
