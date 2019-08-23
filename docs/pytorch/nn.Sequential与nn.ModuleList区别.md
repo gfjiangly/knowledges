@@ -4,13 +4,17 @@
 
 需要注意的是，nn.ModuleList接受的必须是subModule类型，例如：
 
- 
 
+```python
 nn.ModuleList(
+    [
+        nn.ModuleList(
+        [Conv(inp_dim + j * increase, oup_dim, 1, relu=False, bn=False) for j in range(5)]) 
+        for i in range(nstack)
+    ]
+)
+```
 
-​            [nn.ModuleList([Conv(inp_dim + j * increase, oup_dim, 1, relu=False, bn=False) for j in range(5)]) for i in range(nstack)])
-
- 
 
 其中，二次嵌套的list内部也必须额外使用一个nn.ModuleList修饰实例化，否则会无法识别类型而报错！
 
