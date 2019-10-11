@@ -1,0 +1,1 @@
+https://github.com/open-mmlab/mmdetection/blob/master/docs/INSTALL.md

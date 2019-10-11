@@ -1,3 +1,12 @@
+卸载驱动
+```bash
+sudo /usr/bin/nvidia-uninstall
+# or
+sudo apt-get install autoremove --purge nvidia*
+```
+
+
+
 CUDA的官方文档介绍：a general purpose parallel computing platform and programming model that leverages the parallel compute engine in NVIDIA GPUs to solve many complex computational problems in a more efficient way than on a CPU. 
 
 换句话说CUDA是NVIDIA推出的用于自家GPU的并行计算框架，也就是说CUDA只能在NVIDIA的GPU上运行，而且只有当要解决的计算问题是可以大量并行计算的时候才能发挥CUDA的作用。
