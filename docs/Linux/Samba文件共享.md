@@ -24,7 +24,18 @@ sudo nano /etc/samba/smb.conf
 
 \# --------------------------------------------
 
- 
+ [root@s]
+comment = Root Folder For DL
+path = /
+public = no
+read only = no
+guest ok = no
+valid users = gfjiang
+write list = gfjiang
+available = yes
+writable = yes
+
+
 
 [pengchenghu samba share]
 
@@ -292,6 +303,10 @@ mount -t cifs -o noserverino -o username="gfjiang",uid="501",gid="501" //10.193.
 - 网上没加-o noserverino,uid,gid大部分都不能成功挂载
 
  
+
+samba服务使用的端口：139 及 445
+
+
 
 参考：
 
