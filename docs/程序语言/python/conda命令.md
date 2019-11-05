@@ -1,3 +1,10 @@
+
+```bash
+# 清理缓存
+conda clean -ya
+
+```
+
 1、 首先在所在系统中安装Anaconda。可以打开命令行输入conda -V检验是否安装以及当前conda的版本。
 
 conda list查看安装了哪些包

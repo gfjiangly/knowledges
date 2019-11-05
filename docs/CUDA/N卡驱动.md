@@ -1,4 +1,6 @@
-![img](https://img-blog.csdnimg.cn/20190508103705372.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hlc29uZ3plZmFpcnk=,size_16,color_FFFFFF,t_70)
+驱动版本与CUDA版本对应关系
+
+![img](../../assets/cuda_sm_list.jpg)
 
 
 ```bash
