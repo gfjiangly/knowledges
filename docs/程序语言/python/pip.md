@@ -53,3 +53,15 @@ Windows
 
 %LocalAppData%\pip\Cache
 
+
+
+pip命令
+
+```bash
+# 查看包安装信息
+pip show 包名
+
+```
+
+
+
