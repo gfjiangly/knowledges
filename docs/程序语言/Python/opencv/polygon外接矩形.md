@@ -12,5 +12,6 @@ xywha = cv.minAreaRect(hull_points)	# 返回元组((x,y),(w,h),a)
 xyxyxyxy = cv.boxPoints(xywha)	# 返回带方向矩形顶点坐标，shape为[4, 2]
 
 # 最小外接正矩形
+# 返回一个元组：(x1, y1, w, h), 与coco的bbox形同
 xywh = cv.boundingRect(points)
 ```

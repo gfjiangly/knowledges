@@ -8,6 +8,15 @@
 
 ```bash
 # or
-find . -name "*.log" -print | xargs rm
+find . -name "*.png" -print | xargs rm -rf '*'
+```
+
+
+
+其它命令
+
+```bash
+# 删除当前文件夹内所有文件，不是使用点，是使用*
+rm -rf *
 ```
 

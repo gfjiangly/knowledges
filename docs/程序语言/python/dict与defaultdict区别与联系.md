@@ -1,8 +1,8 @@
-key不在dict中，也不在defaultdict中时，访问dict会出现keyError，而defaultdict则返回其默认的类型。
+## 区别
 
-此外，defaultdict字典不能用for key, value in defaultdict方式同时访问键和值，要用defaultdict.items()
+### KeyError(`__missing__`)处理
 
-
+key不在dict中，访问dict会出现KeyError；key不在defaultdict中时，访问defaultdict则返回其默认的类型。如：
 
 ```python
 from collections import defaultdict
@@ -15,9 +15,55 @@ print (d2['a'])		# []
 print (d3['a'])		# 0
 ```
 
+### 嵌套字典创建
+
+用defaultdict实现不能直接defaultdict(defaultdict(list))之类，否则会报TypeError: first argument must be callable or None错误。正确用法是：
+
+```python
+# 这种写法的数据是不能被pickle序列化的，得传入模块级别的函数
+nest_dict = defaultdict(lambda: defaultdict(list))  # __missing__方法中处理KeyError调用的处理函数
+
+# 这种写法可被序列化
+def d_list():
+    return defaultdict(list)
+dd = defaultdict(d_list)
+```
+
+当然也能用下面写法制作一个嵌套字典，但不能提供默认值，使用时需用get方法提供默认值。最重要的是不能保证里面嵌套的真的是字典（实际上defaultdict实现的嵌套字典也不能保证，Python数据对象自由度很高）。
+
+```python
+# 这种写法，不能保证里面类型一定还是个字典
+dd = dict()
+dd['a'] = {'b': 2}
+```
 
 
-再看一个例子：
+
+## 联系
+
+### 迭代方式相同
+
+这一点是肯定的。因为defaultdict包装了dict，实现自定义`__missing__`处理。
+
+```python
+from collections import defaultdict
+d = dict()
+# d = defaultdict(list)
+for key in d:
+    print(key)
+for key in d.keys():
+    print(key)
+for value in d.values():
+    print(value)
+for key, value in d.items():
+    print(key, value)
+```
+
+defaultdict的迭代和dict是一样的。注意`d.keys()`不是list，是一个可迭代对象。
+
+### 默认值处理
+
+`collections.defaultdict()`使用起来效果和运用`dict.setdefault()`比较相似。
 
 ```python
 import collections
@@ -53,4 +99,5 @@ list(d.items())
 >>> d.default_factory
 >>> <class 'list'>
 ```
-可以看出collections.defaultdict()使用起来效果和运用dict.setdefault()比较相似。
+
+

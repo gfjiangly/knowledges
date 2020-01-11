@@ -205,7 +205,7 @@ config file和include的区别是：使用config file时，当以test的身份�
 
  
 
-4、添加Samba访问账号-需要和配置文件中相对应
+### 4 添加Samba访问账号-需要和配置文件中相对应
 
 新增Samba访问账号sudo useradd gfjiang     # 添加系统用户，用户已存在可略去此步骤
 

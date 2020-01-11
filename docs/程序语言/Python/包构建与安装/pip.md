@@ -4,6 +4,9 @@ pip download -i https://pypi.tuna.tsinghua.edu.cn/simple -d /home/gfjiang/packs 
 
 -i 指定临时源
 
+- https://pypi.org/simple/  默认
+- https://test.pypi.org/simple/
+
 
 
 持久修改pip源
