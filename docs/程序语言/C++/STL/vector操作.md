@@ -1,8 +1,15 @@
- 头文件：`#include<vector>` 
+ ## 特性
 
-### 基本操作
+- 增删：任意位置插入或删除元素耗时
+- 改：适合随机访问，O(1)
 
-vector是最常用的STL数据结构之一，基本操作有点多。
+对连续内存数据操作的抽象。 
+
+## STL提供的操作
+
+底层数据结构为数组 ，支持快速随机访问。
+
+头文件：`#include<vector>` 。vector是最常用的STL数据结构之一，操作有点多。
 
 ```C++
 vector<int> vec;
@@ -60,7 +67,25 @@ vector<int> ilist5(7, 3);
 
  指定值初始化，ilist5被初始化为包含7个值为3的int 
 
+### 增
 
+空间复杂度：O(1)或O(n)，当需要成倍增加vector空间时是O(n)。
+
+#### 1 放在元素末尾
+
+时间复杂度：O(1)
+
+```cpp
+v.push_back(data);
+```
+
+#### 2 任意位置插入
+
+耗时！
+
+```cpp
+v.insert(position, data);
+```
 
 ### 迭代
 
@@ -79,21 +104,15 @@ for (auto it = vec.begin(); it != vec.end(); it++) {
 
 ```
 
-
-
 ### 清空元素 
 
 ```C++
 vector<int> v;
-
 // 不收回空间
 v.clear();
-
 // 回收内存
 v.swap(vector<int>()) ;
 ```
-
-
 
 ### 判断某一元素是否存在于vector中
 
@@ -103,8 +122,6 @@ bool is_in_vector(vector<int> v, int element){
     else return false;
 }
 ```
-
-
 
 ### 把一个vector里的元素追加放入另外一个vector
 
