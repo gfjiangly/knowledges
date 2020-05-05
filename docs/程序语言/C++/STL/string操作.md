@@ -1,5 +1,29 @@
 C++重载的`[]`只有索引单个字符功能，没有切片功能。
 
+### 插入字符或字符串
+
+string的成员函数insert有以下多种重载：
+
+```cpp
+// 在p0处插入n个字符c
+string &insert(int p0, int n, char c);  // 较为常用
+// 在p0位置插入字符串s
+string &insert(int p0, const char *s);
+// 在p0位置插入字符串s的前n个字符
+string &insert(int p0, const char *s, int n);
+// 在p0位置插入字符串s
+string &insert(int p0, const string &s);
+// 在p0位置插入字符串s从pos开始的连续n个字符
+string &insert(int p0, const string &s, int pos, int n);
+
+// 在it处插入字符c，返回插入后迭代器的位置
+iterator insert(iterator it, char c);
+// 在it处插入从first开始至last-1的所有字符
+void insert(iterator it, const_iterator first, const_iteratorlast);
+// 在it处插入n个字符c
+void insert(iterator it, int n, char c);
+```
+
 ### 截取子串
 
 ```C++

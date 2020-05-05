@@ -2,7 +2,6 @@
 ```bash
 # 清理缓存
 conda clean -ya
-
 ```
 
 1、 首先在所在系统中安装Anaconda。可以打开命令行输入conda -V检验是否安装以及当前conda的版本。
@@ -29,7 +28,9 @@ conda -V查看conda的版本
 
 使用 conda create -n your_env_name python=X.X（2.7、3.6等)命令创建python版本为X.X、名字为your_env_name的虚拟环境。your_env_name文件可以在Anaconda安装目录envs文件下找到。
 
- 
+ 新版Anaconda或Miniconda虚拟环境位置从软件安装路径变更到用户目录`.conda/envs`下。
+
+
 
 4、使用激活(或切换不同python版本)的虚拟环境。
 
