@@ -1,6 +1,6 @@
 安装ssh服务：
 
-sudo apt-get install openssh-server
+sudo apt install openssh-server
 
 
 
