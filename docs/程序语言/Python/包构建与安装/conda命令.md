@@ -106,12 +106,21 @@ pip install -r requirements.txt
 
 常用包安装：
 
+```bash
+# 安装cuda, 不指定版本默认安装最新版
+conda install cudatoolkit=8.0 -c https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/linux-64/
+
+# 安装cudnn:
+conda install cudnn=7.0.5 -c https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/linux-64/
+
+# tf2的gpu和cpu版本不需要分开安装
 conda install tensorflow-gpu keras
-
 conda install pillow
-
 conda install matplotlib
-
 conda install scikit-learn
-
 conda install graphviz pydot
+
+# 当解决环境很费时时可以尝试
+conda upgrade --all
+```
+

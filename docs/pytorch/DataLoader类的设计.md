@@ -158,7 +158,7 @@ class _DataLoaderIter(object):
         self.send_idx += 1    
         
     def _process_next_batch(self, batch):
-        # 每次预取两倍的数据量
+        # 只有取了batch，才继续放indices去处理，防止内存爆了
         self.rcvd_idx += 1
         self._put_indices()
         if isinstance(batch, ExceptionWrapper):
@@ -298,7 +298,52 @@ cudnn: 7104
 
 这确实是多进程的原因，虽然是同一个对象，但是不同进程修改了对象不会同步进其它进程。
 
+PS：不要在迭代时修改迭代器对象！
 
 
 
+## DataLoader迭代关系简化
+
+```python
+class DataLoader(object):
+    """
+    使用dataset, batch_size等参数构造DataLoader
+    """
+    def __init__(self, dataset, batch_size, ...):
+        self.dataset = dataset
+        self.batch_size = batch_size
+        pass
+    def __iter__(self):
+        return _DataLoaderIter(self)
+        
+class _DataLoaderIter(object):
+    """
+    存储容器loader的引用，也获取了dataloader的各种参数，如collate_fn，batch_sampler等，用于不同策略的迭代
+    """
+    def __init__(self, loader):
+    	  self.dataset = loader.dataset
+        self.collate_fn = loader.collate_fn
+        self.batch_sampler = loader.batch_sampler
+        self.sample_iter = iter(self.batch_sampler) # 使用一个iterator来记录当前迭代的状态
+        pass
+    
+    """
+    返回self，和上面的例子一样
+    """
+    def __iter__(self):
+        return self
+    
+    """
+    使用batch_size等(代码经过简化)
+    """  
+    def __next__(self):
+        
+        # 获取下一个batch包含dataset中哪些index，next可能会抛出StopIteration异常
+        indices = next(self.sample_iter)  
+        
+        # 这里调用了dataset的__getitem__函数真正获取了数据并返回
+        batch = self.collate_fn([self.dataset[i] for i in indices]) 
+        
+        return batch
+```
 

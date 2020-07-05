@@ -1,6 +1,22 @@
 ### 重命名列
 
-两种方式，一种重命名所有列传入一个list。df.columns = ['xxx', 'xxx']。还有一种是重命名特定列，传入一个字典。df.rename(columns={"xxx": "yyy"})
+两种方式，
+
+一种重命名所有列传入一个list。
+
+```python
+# 长度必须与df.shape[0]对齐
+df.columns = ['xxx1', 'xxx2']
+# 这种一般适用于没有列名的，给个列名
+```
+
+还有一种是重命名特定列，传入一个字典。
+
+```python
+# 这个是真的"重命名"
+# 只需要修改自己想改的列名，不必全部改
+df = df.rename(columns={"xxx": "yyy"})
+```
 
 
 
@@ -39,7 +55,7 @@ df.iloc[1:3,[1,2]	#第1行到第3行（不包含第3行），第1列和第2列�
 
 ### 筛选
 
-#### 筛选行
+#### 简单筛选
 
 与numpy类似，使用维度自动扩展和布尔索引，例如：
 
@@ -51,11 +67,47 @@ df[df["label"] == 1]
 df[df["label"] == 1 & df["num"] > 1]
 ```
 
+#### 复杂筛选
+
+主要是通过传入函数实现
+
+```python
+def expired_url(url):
+    if 'vdna' in url:
+        return True
+    else:
+        return False
+
+# 用expired_url筛选了符合条件(返回True)行
+df = df[['vid', 'time']][df['url'].apply(expired_url)]
+```
 
 
-筛选列
+
+### 拼接
+
+使用concat函数
+
+```python
+df = pd.concat([df_user, dummies_sex, dummies_age, dummies_level], axis=1)
+```
 
 
+参数axis=1表示列拼接（左右拼在一起），axis=0表示行拼接（上下拼在一起）。
+
+要保证每个表单的行数是相同的，并且每一行对应的key也是相同的，列拼接才变得有意义
+
+
+
+## shuffle
+
+```python
+df = df.sample(frac=1).reset_index(drop=True)
+```
+
+Here, specifying `drop=True` prevents `.reset_index` from creating a column containing the old index entries.
+
+See: https://stackoverflow.com/questions/29576430/shuffle-dataframe-rows
 
 
 

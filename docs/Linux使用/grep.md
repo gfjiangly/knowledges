@@ -17,7 +17,7 @@ ls -lR | grep "^-" | wc -l
 **统计某文件夹下目录的个数**
 
 ```bash
-ls -l |grep "^ｄ"|wc -l
+ls -l | grep "^ｄ" | wc -l
 ```
 
 
@@ -25,7 +25,7 @@ ls -l |grep "^ｄ"|wc -l
 **统计文件夹下目录的个数，包括子文件夹里的**
 
 ```bash
-ls -lR|grep "^d"|wc -l
+ls -lR | grep "^d" | wc -l
 ```
 
 

@@ -1,3 +1,60 @@
+## 模块和包
+
+python中，每个py文件被称之为模块；每个具有`__init__.py`文件的目录被称为包。
+
+只要模块或者包所在的目录在sys.path中，就可以使用`import 模块`或`import 包`来使用
+
+
+
+## 精确导入和模糊导入
+
+精确导入：
+
+```
+from Root.Pack1 import Pack1Class
+
+import Root.Pack1.Pack1Class
+```
+
+模糊导入：
+
+```
+from Root.Pack1 import *
+```
+
+模糊导入中的*中的模块是由`__all__`来定义的，`__init__.py`的另外一个作用就是定义package中的`__all__`，用来模糊导入，如`__init__.py`：
+
+```
+__all__ = ["Pack1Class","Pack1Class1"]
+```
+
+在包外部调用：
+
+```
+from Root.Pack1 import *
+
+a = Pack1Class.Pack1_AA("Alvin")
+
+a.PrintName()
+```
+
+正常情况下我们写from aaa.bbb import *会引入位于aaa/bbb目录下的所有modules——这是一个不好的实践，因为有些东西可能会有副作用。特别的如果某个package下有你明确不希望被引用的py文件，可以通过`__all__`明确说明哪些是希望引入的，这样在python处理import *时会忽略掉不在`__all__`列表的内容。如下面的`__init__.py`指明了在import *时只有persons这个module会被引入。
+
+
+**dir**
+dir(）是python中内置的命令返回一个字符串数组，可以用来查看一个module声明的名称(`__all__`的内容)。通过dir(module_name)查看一个module声明的名称，不提供参数的情况下会返回当前文件的声明信息。
+
+
+
+## Module的查找路径
+
+python会通过两个地方查找被引入的module——builtins和sys.path。
+
+builtins是python内置的标准函数库，可能因不同的平台而有所不同，
+
+sys.path则分为项目目录和PYTHONPATH两部分。当一个module被引入时，python先查找builtins，如果没有找到则尝试在**当前目录**查找，如果仍然没有则查找PYTHONPATH也就是python的site-package目录。因此如果在项目目录中声明了和PYTHONPATH中同名的module，那么项目目录中的module会优先加载。
+
+
 ## 模块导入的两种方式
 
 - 使用**点**的方式可以导入，但是不能直接运行。
@@ -120,3 +177,10 @@ py_cpu_nms还没导入就在merge_dets模块使用了，因此报AttributeError�
 原则：
 
 - 一般将低依赖的模块放在靠前的位置导入，因为它的依赖较少
+
+
+
+
+
+- command line中执行python时每次都会重新编译，不会尝试加载。
+- 不存在源文件时，python不会直接从缓存中加载*.pyc文件。
