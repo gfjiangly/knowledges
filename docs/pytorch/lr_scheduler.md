@@ -1,3 +1,5 @@
+# 余弦退火
+
 四个参数
 
 - 最大学习率，即mmcv中base_lr
@@ -5,10 +7,8 @@
 - 基本周期
 - 周期倍数
 
-
-
 mmcv中实现的是整个训练过程为一个周期，学习率按余弦变化，非带重启的余弦学习率。
 
+参考：
 
-
-https://blog.csdn.net/winycg/article/details/87981725
+- https://blog.csdn.net/winycg/article/details/87981725
