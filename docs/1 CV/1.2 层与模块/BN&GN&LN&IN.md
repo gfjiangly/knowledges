@@ -21,6 +21,8 @@ GN和BN的效果对比如图2所示：从图中可以看到GN基本不受batch s
 
 LN，IN以及GN都没有在N维度上进行归一化，所以不会有BN的问题。相比之下，GN是更常用的。
 
+GN：G是组的数量，是预定义的超参数(默认为G=32)。C/G是每组的通道数，GN沿着(C/G,H,W)来计算 ![[公式]](assets/BN&GN&LN&IN/equation.svg) 。
+
 那BN到底是什么原理呢？说到底还是**为了防止“梯度弥散”**。关于梯度弥散，大家都知道一个简单的栗子：![[公式]](assets/BN&GN&IN/equation.svg)。在BN中，是通过将activation规范为均值和方差一致的手段使得原本会减小的activation的scale变大。可以说是一种更有效的local response normalization方法
 
 前向：
