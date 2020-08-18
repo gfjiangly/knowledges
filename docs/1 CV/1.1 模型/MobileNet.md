@@ -1,5 +1,9 @@
 MobileNet网络模型主要是基于现有的大部分网络模型，使用计算量更小的卷积替换现有普通卷积。
 
+MobileNet v1最主要的贡献是使用了Depthwise Separable Convolution，它又可以拆分成Depthwise卷积和Pointwise卷积。MobileNet v2主要是将残差网络和Depthwise Separable卷积进行了结合。通过分析单通道的流形特征对残差块进行了改进，包括对中间层的扩展(d)以及bottleneck层的线性激活(c)。
+
+V2：
+
 在MobileNet基础上做了以下几点改进：
 
 - 引入反向残差结构。所谓反向残差结构，我猜意思是从通道角度说的，起了一个与resnet不同的名字，以说明自己的残差结构通道是先膨胀再压缩。
@@ -10,3 +14,9 @@ MobileNet网络模型主要是基于现有的大部分网络模型，使用计�
 DWConv layer层提取得到的特征受限于输入的通道数，若是采用以往的residual block，先“压缩”，再卷积提特征，那么DWConv layer可提取得特征就太少了，因此一开始不“压缩”，MobileNetV2反其道而行，一开始先“扩张”，本文实验“扩张”倍数为6。 通常residual block里面是 “压缩”→“卷积提特征”→“扩张”，MobileNetV2就变成了 “扩张”→“卷积提特征”→ “压缩”，因此称为Inverted residuals
 
 ![img](assets/MobileNet/20180123092059581.png)
+
+
+
+参考：
+
+1. https://zhuanlan.zhihu.com/p/50045821
