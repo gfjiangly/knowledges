@@ -61,3 +61,7 @@ Randab = a * (Randb - 1) + Randa
 ```
 
 例如，已知`rand3`和`rand5`，生成`rand15 = 3*(rand5-1) + rand3 = 5*(rand3-1) + rand5`
+
+
+
+![image-20200824170318759](assets/%E5%88%A9%E7%94%A8%E7%AD%89%E6%A6%82%E7%8E%87Rand3%E4%BA%A7%E7%94%9F%E7%AD%89%E6%A6%82%E7%8E%87Rand5/image-20200824170318759.png)
