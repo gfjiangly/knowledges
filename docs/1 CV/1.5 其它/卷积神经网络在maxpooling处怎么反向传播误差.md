@@ -18,4 +18,5 @@ mean pooling比较容易让人理解错的地方就是会简单的认为直接�
 参考：
 
 - https://blog.csdn.net/qq_21190081/article/details/72871704
+- https://blog.csdn.net/oBrightLamp/article/details/84635308
 
