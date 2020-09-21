@@ -1,3 +1,21 @@
+控制状态
+
+自动控制
+
+```bash
+nvidia-settings -a "[gpu:0]/GPUFanControlState=0"
+```
+
+手动控制
+
+```bash
+nvidia-settings -a "[gpu:0]/GPUFanControlState=1"
+```
+
+
+
+
+
 有界面
 
 I found the bulk of my answer [on Ubuntu Forums](http://ubuntuforums.org/showthread.php?t=2114764) but the command to set the fan speed given was wrong. I also wrote the shell script myself (and I'm a noob), so feel free to comment how I did everything wrong, as long as you tell me how to fix it :) I added excessive comments so people who don't understand bash can get an idea of what I'm doing. This only works for 1 GPU, and will need modifications for multiple. By the way, the fan curve I have set is `speed%=0.028*(degreesC^2)`.

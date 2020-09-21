@@ -298,11 +298,13 @@ net view [\\IP](file://IP)
 
 mount -t cifs -o noserverino -o username="gfjiang",uid="501",gid="501" //10.193.0.20/gfjiang /home/gfjiang/10.193.0.20
 
-- 需要安装cifs
+- 需要安装cifs，`sudo apt-get install cifs-utils `
 
 - 网上没加-o noserverino,uid,gid大部分都不能成功挂载
 
  username是远程主机的用户名，//10.193.0.20/gfjiang是远程主机目录，/home/gfjiang/10.193.0.20是本地挂载目录。命令输完后会要求输入远程主机登录密码，以授权访问。
+
+因为是借助于sudo来挂载的，导致挂载共享硬盘里面的文件全部都只有root能进行修改。挂载时可以加上文件权限`-o file_mode=0777 -o dir_mode=0777`
 
 samba服务使用的端口：139 及 445
 

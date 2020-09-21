@@ -25,8 +25,8 @@ chmod -R o-w file  # 为other用户组去除写权限
 修改所有者
 
 ```bash
-chmod 所有者 文件
-chmod 所有者 文件夹 -R
+chown [-R] 账号名称 文件或目录
+chown [-R] 账号名称:用户组名称 文件或目录
 ```
 
 
