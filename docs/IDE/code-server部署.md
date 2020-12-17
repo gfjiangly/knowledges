@@ -13,5 +13,8 @@ tar -xvf code-server-3.5.0-linux-x86_64.tar.gz
 
 # 修改密码和端口号运行
  export PASSWORD="你自己的密码" && nohup ./code-server --host 0.0.0.0 --port 2020 &
+ 
+# 指定用户目录，可以将此目录权限设置为777
+--user-data-dir="/media/soft/code-server-3.5.0-linux-x86_64/plugin"
 ```
 

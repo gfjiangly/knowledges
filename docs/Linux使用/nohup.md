@@ -31,8 +31,9 @@ nohup command &
 eg:
 
 ```bash
-`nohup /usr/local/node/bin/node /www/im/chat.js > /usr/local/node/output.log 2>&1 &`
+nohup /usr/local/node/bin/node /www/im/chat.js > /usr/local/node/output.log 2>&1 &
+nohup /usr/local/node/bin/node /www/im/chat.js > /dev/null 2>&1 &
 ```
 
-
+/dev/null 是Linux下一个特殊的文件，它就像一个无底洞，所有重定向到它的信息都会消失得无影无踪。这一点非常有用，当我们不需要回显程序的所有信息时，就可以将输出重定向到/dev/null。 
 

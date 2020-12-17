@@ -4,3 +4,20 @@
 
 https://blog.csdn.net/u011459278/article/details/51841481
 
+## launch.json
+
+### 环境
+
+```
+"env": {"PYTHONPATH": "${workspaceRoot}"}
+```
+
+可以防止debug时，`sys.path.append('../../..')`不起作用找不到模块。
+
+
+
+## 取消文件自动定位到侧边栏
+
+打开设置File-Preference-Settings，搜索reveal，滑到Auto Reveal，选择false。
+
+![image-20201115110804664](../../assets/image-20201115110804664.png)

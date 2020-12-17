@@ -1,3 +1,5 @@
+### 临时指定源
+
 根据requirement.txt使用清华源下载安装包到指定目录下：
 
 pip download -i https://pypi.tuna.tsinghua.edu.cn/simple -d /home/gfjiang/packs -r requirement.txt
@@ -9,21 +11,31 @@ pip download -i https://pypi.tuna.tsinghua.edu.cn/simple -d /home/gfjiang/packs 
 
 
 
-持久修改pip源
+### pip 生成和安装requirements.txt
 
-linux下，修改 ~/.pip/pip.conf (没有就创建一个)， 修改 index-url至tuna，内容如下：
+```bash
+pip freeze > requirements.txt
+pip install -r requirements.txt
+```
 
+
+
+### 持久修改pip源
+
+#### Linux
+
+修改 ~/.pip/pip.conf (没有就创建一个)， 内容与windows下相同。
+
+#### Windows
+
+直接在user目录中创建一个pip目录，如：C:\Users\xx\pip，新建文件pip.ini，内容如下：
+
+```
 [global]
 index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+```
 
-windows下，直接在user目录中创建一个pip目录，如：C:\Users\xx\pip，新建文件pip.ini，内容如下
-
-[global]
-index-url = https://pypi.tuna.tsinghua.edu.cn/simple
-
-
-
-通过命令创建pip.conf文件：
+#### 通过命令创建pip.conf文件
 
 ```bash
 pip3 config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
@@ -34,7 +46,7 @@ pip3 config set install.trusted-host pypi.tuna.tsinghua.edu.cn
 
 
 
-安装卸载pytorch
+### 安装卸载pytorch
 
 cuda9.0
 

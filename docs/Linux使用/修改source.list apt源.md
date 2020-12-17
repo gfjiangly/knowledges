@@ -28,10 +28,9 @@ deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates main restric
 deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse
 deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security main restricted universe multiverse
 
-
-
 科大源
 
+```bash
 deb http://mirrors.ustc.edu.cn/ubuntu/ xenial main restricted universe multiverse
 deb http://mirrors.ustc.edu.cn/ubuntu/ xenial-security main restricted universe multiverse
 deb http://mirrors.ustc.edu.cn/ubuntu/ xenial-updates main restricted universe multiverse
@@ -42,11 +41,11 @@ deb-src http://mirrors.ustc.edu.cn/ubuntu/ xenial-security main restricted unive
 deb-src http://mirrors.ustc.edu.cn/ubuntu/ xenial-updates main restricted universe multiverse
 deb-src http://mirrors.ustc.edu.cn/ubuntu/ xenial-proposed main restricted universe multiverse
 deb-src http://mirrors.ustc.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse
-
-
+```
 
 阿里源
 
+```bash
 deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted universe multiverse
 deb http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted universe multiverse
 deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted universe multiverse
@@ -57,9 +56,11 @@ deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted univer
 deb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted universe multiverse
 deb-src http://mirrors.aliyun.com/ubuntu/ xenial-proposed main restricted universe multiverse
 deb-src http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse
+```
 
 or
 
+```bash
 deb http://zeroc.com/download/Ice/3.6/ubuntu16.04 stable main
 deb http://mirrors.aliyun.com/ubuntu/ xenial main
 #deb-src http://mirrors.aliyun.com/ubuntu/ xenial main
@@ -78,6 +79,7 @@ deb http://mirrors.aliyun.com/ubuntu/ xenial-security universe
 #deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security universe
 
 
+```
 
 修改完毕后，
 

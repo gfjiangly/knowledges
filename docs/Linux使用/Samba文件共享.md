@@ -22,6 +22,18 @@ sudo chmod 777 /home/gfjiang/share
 
 sudo nano /etc/samba/smb.conf
 
+修改完配置后，把用户添加到samba组才能在客户端登录，最后重启服务：
+
+```bash
+# 添加到samba组
+sudo smbpasswd -a jiang
+
+sudo /etc/init.d/samba restart
+or sudo service smbd restart
+```
+
+
+
 \# --------------------------------------------
 
  [root@s]
@@ -307,6 +319,18 @@ mount -t cifs -o noserverino -o username="gfjiang",uid="501",gid="501" //10.193.
 因为是借助于sudo来挂载的，导致挂载共享硬盘里面的文件全部都只有root能进行修改。挂载时可以加上文件权限`-o file_mode=0777 -o dir_mode=0777`
 
 samba服务使用的端口：139 及 445
+
+
+
+## 无法访问软链接
+
+与权限无关，在配置文件的`[global]`下增加：
+
+```bash
+wide links = yes
+symlinks = yes
+unix extensions = no
+```
 
 
 
