@@ -10,9 +10,9 @@ sudo cp /etc/apt/sources.list /etc/apt/sources.list.bakcup
 
 
 
+！！！注意以下源仅适用于Ubuntu16.04系统
+
 打开：nano /etc/apt/sources.list
-
-
 
 清华源
 

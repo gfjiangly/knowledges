@@ -21,3 +21,8 @@ docker run --gpus all --entrypoint=/bin/bash -it <imageid>
 apt-get install -y cuda-core-8-0	# cuda-8.0
 ```
 
+注意：
+
+1. 并不是使用了docker就可以创建任何cuda环境，CUDA版本的支持与GPU驱动所支持的CUDA版本有关，例如`NVIDIA-SMI 430.50`版本最高支持`CUDA Version: 10.1`，那么创建的CUDA环境只能<=10.1
+
+![image-20210318125048620](../../assets/image-20210318125048620.png)
