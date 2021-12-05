@@ -1,0 +1,13 @@
+较为高级的主题，不会导致程序错误，但理解了可以提高运行速度。
+
+为了实现内存高带宽的同时访问，shared memory被划分成了可以同时访问的等大小内存块(banks)。因此，内存读写n个地址的行为则可以以b个独立的bank同时操作的方式进行，这样有效带宽就提高到了一个bank的b倍。
+
+然而，如果多个线程请求的内存地址被映射到了同一个bank上，那么这些请求就变成了串行的(serialized)。硬件将把这些请求分成x个没有冲突的请求序列，带宽就降成了原来的x分之一。但是如果一个warp内的所有线程都访问同一个内存地址的话，会产生一次广播(boardcast)，这些请求会一次完成。
+
+为了最小化bank conflicts，理解内存地址是如何映射到banks是很重要的。shared memory 中连续的32位字被分配到连续的banks，每个clock cycle每个bank的带宽是32bits。
+
+计算能力1.x的设备上warpsize=32,bank数量是16.一个warp的共享内存请求被分成两个，一个是前半个warp，一个是后半个warp的请求。
+
+计算能力2.0的设备，warpsize=32，bank的数量也是32.这样内存请求就不再划分成前后两个。
+
+计算能力3.x的设备bank的大小可以自定义配置了， cudaDeviceSetSharedMemConfig() 配置成 cudaSharedMemBankSizeFourByte 四个字节或者 cudaSharedMemBankSizeEightByte 。设置成8字节可以有效避免双精度数据的bank conflicts。 

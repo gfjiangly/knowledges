@@ -1,0 +1,17 @@
+文件夹大小：
+
+```bash
+du -h --max-depth=1 路径
+```
+
+在mac下无--max-depth选项
+
+
+
+每个文件大小及所有者和权限详情：
+
+```bash
+ls -lh path
+```
+
+h表示 human
